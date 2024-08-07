@@ -1,4 +1,5 @@
-import { ProductRepository } from "../typeorm/repositories/ProductRepository";
+import { ProductRepository } from "@shared/typeorm/repositories/ProductRepository";
+import Product from "@shared/typeorm/entities/Product";
 import AppError from "@shared/errors/AppError";
 
 interface CreateProductRequest {
@@ -8,10 +9,10 @@ interface CreateProductRequest {
 }
 
 export default class CreateProductService {
-  public async execute({ name, price, quantity }: CreateProductRequest) {
+  public async execute({ name, price, quantity }: CreateProductRequest): Promise<Product> {
     const productExists = await ProductRepository.findByName(name);
 
-    if (productExists) throw new AppError("Product already exists");
+    if (productExists) throw new AppError("A product with the given name already exists");
 
     const newProduct = ProductRepository.create({ name, price, quantity });
     await ProductRepository.save(newProduct);
