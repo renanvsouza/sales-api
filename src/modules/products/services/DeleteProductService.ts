@@ -1,5 +1,5 @@
-import { ProductRepository } from "@shared/typeorm/repositories/ProductRepository";
-import Product from "@shared/typeorm/entities/Product";
+import { ProductRepository } from "../repositories/ProductRepository";
+import Product from "../entities/Product";
 import AppError from "@shared/errors/AppError";
 
 interface DeleteProductRequest {

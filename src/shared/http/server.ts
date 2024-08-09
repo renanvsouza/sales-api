@@ -1,9 +1,9 @@
 import 'reflect-metadata';
 import express, { NextFunction, Request, Response } from 'express';
 import cors from 'cors';
-import routes from './routes';
 import AppError from '@shared/errors/AppError';
 import { AppDataSource } from '@shared/typeorm';
+import routes from './routes';
 
 const app = express();
 const port = 3333;
@@ -16,7 +16,8 @@ app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
   if (error instanceof AppError) {
     return res.status(error.statusCode).json({
       status: 'error',
-      message: error.message
+      message: error.message,
+      details: error.details || null
     });
   }
 
