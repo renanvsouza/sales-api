@@ -3,7 +3,7 @@ import ListUserService from "../services/ListUserService";
 import CreateUserService from "../services/CreateUserService";
 
 export default class UserController {
-  public async list(request: Request, response: Response, next: NextFunction): Promise<void | Response> {
+  public async list(request: Request, response: Response, next: NextFunction): Promise<Response | void> {
     try {
       const listUsers = new ListUserService();
       const users = await listUsers.execute();
@@ -13,7 +13,7 @@ export default class UserController {
     }
   }
 
-  public async create(request: Request, response: Response, next: NextFunction): Promise<void | Response> {
+  public async create(request: Request, response: Response, next: NextFunction): Promise<Response | void> {
     try {
       const { name, email, password } = request.body;
       const createUser = new CreateUserService();
