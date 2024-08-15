@@ -2,6 +2,7 @@ import { Router } from "express";
 import UserController from "../controller/UserController";
 import validateInput from "@shared/middleware/validateInput";
 import Joi from "joi";
+import isAuthenticated from "@shared/middleware/isAuthenticated";
 
 const userRoutes = Router();
 const userController = new UserController();
@@ -13,7 +14,7 @@ const createUserValidation = Joi.object({
 });
 
 userRoutes.route("/")
-  .get(userController.list)
+  .get(isAuthenticated, userController.list)
   .post(validateInput(createUserValidation), userController.create);
 
 export default userRoutes;

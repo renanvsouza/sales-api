@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(routes);
 
 app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
-  console.log(error);
+  console.log(error, typeof error);
 
   if (error instanceof AppError) {
     return res.status(error.statusCode || 400).json({
