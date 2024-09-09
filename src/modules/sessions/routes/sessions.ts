@@ -1,5 +1,5 @@
 import { Router } from "express";
-import SessionController from "../controller/SessionController";
+import SessionController from "../controllers/SessionController";
 import validateInput from "@shared/middleware/validateInput";
 import Joi from "joi";
 

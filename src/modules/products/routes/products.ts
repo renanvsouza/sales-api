@@ -1,5 +1,5 @@
 import { Router } from "express";
-import ProductController from "@modules/products/controller/ProductController";
+import ProductController from "@modules/products/controllers/ProductController";
 import validateInput from "@shared/middleware/validateInput";
 import Joi from "joi";
 

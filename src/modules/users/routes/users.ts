@@ -1,5 +1,5 @@
 import { Router } from "express";
-import UserController from "../controller/UserController";
+import UserController from "../controllers/UserController";
 import validateInput from "@shared/middleware/validateInput";
 import Joi from "joi";
 import isAuthenticated from "@shared/middleware/isAuthenticated";
